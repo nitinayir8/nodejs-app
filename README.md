@@ -41,3 +41,6 @@ mutation{
   }
 }
 
+# Run the app with a script run 
+- npm run start:dev --- to run the app on a watch mode with nodemon,
+- npm run start -- in a prod mode for instance
