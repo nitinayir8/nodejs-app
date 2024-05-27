@@ -1,9 +1,9 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:eu-north-1:763857617563:task-definition/nodejs-app-task-definition:3",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:837442576474:task-definition/nodejs-app-task:1",
     "containerDefinitions": [
         {
             "name": "nodejs-app",
-            "image": "763857617563.dkr.ecr.eu-north-1.amazonaws.com/nodejs-app",
+            "image": "837442576474.dkr.ecr.us-east-1.amazonaws.com/nodejs-app",
             "cpu": 0,
             "portMappings": [
                 {
@@ -24,19 +24,20 @@
                 "logDriver": "awslogs",
                 "options": {
                     "awslogs-create-group": "true",
-                    "awslogs-group": "/ecs/nodejs-app-task-definition",
-                    "awslogs-region": "eu-north-1",
+                    "awslogs-group": "/ecs/nodejs-app-task",
+                    "awslogs-region": "us-east-1",
                     "awslogs-stream-prefix": "ecs"
                 },
                 "secretOptions": []
-            }
+            },
+            "systemControls": []
         }
     ],
-    "family": "nodejs-app-task-definition",
-    "taskRoleArn": "arn:aws:iam::763857617563:role/ecsTaskExecutionRole",
-    "executionRoleArn": "arn:aws:iam::763857617563:role/ecsTaskExecutionRole",
+    "family": "nodejs-app-task",
+    "taskRoleArn": "arn:aws:iam::837442576474:role/ecsTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::837442576474:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 3,
+    "revision": 1,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -74,7 +75,7 @@
         "FARGATE"
     ],
     "requiresCompatibilities": [
-        "FARGATE"
+        "EC2"
     ],
     "cpu": "1024",
     "memory": "3072",
@@ -82,7 +83,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2023-09-25T19:33:06.607Z",
-    "registeredBy": "arn:aws:iam::763857617563:root",
+    "registeredAt": "2024-05-27T08:14:33.285Z",
+    "registeredBy": "arn:aws:iam::837442576474:root",
     "tags": []
 }
