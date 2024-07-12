@@ -6,27 +6,27 @@ on:
 
 jobs:
  build:
-  runs-on: [ubuntu-latest]
-  steps:
-   -name: Checkout Source
-    uses: actions/checkout@v3
-   -name: login to docker hub
-    run: docker login -u ${{ secrets.DOCKERUSERNAME }} -p ${{ secrets.DOCKERPASSWORD }} 
-   -name: Build docker image
-    run: docker build -t ambika06101995/nodejs-app .
-   -name: Publish docker image to docker hub
-    run: docker push ambika06101995/nodejs-app:latest
+   runs-on: [ubuntu-latest]
+   steps:
+     - name: Checkout Source
+       uses: actions/checkout@v3
+     - name: login to docker hub
+       run: docker login -u ${{ secrets.DOCKERUSERNAME }} -p ${{ secrets.DOCKERPASSWORD }} 
+     - name: Build docker image
+       run: docker build -t ambika06101995/nodejs-app .
+     - name: Publish docker image to docker hub
+       run: docker push ambika06101995/nodejs-app:latest
 
-deploy: 
-  needs: Build
-  runs-on: [ip-172-31-42-138] 
-  steps:
-   -name: pull docker image from docker hub
-    run: docker pull ambika06101995/nodejs-app:latest
-   -name: delete old container
-    run: docker rm -f nodejs-app-container
-   -name: Run docker container
-    run : docker run -d -p 5000:5000 --name nodejs-app-container ambika06101995/nodejs-app
+  deploy: 
+   needs: Build
+    runs-on: [ip-172-31-42-138] 
+    steps:
+     - name: pull docker image from docker hub
+       run: docker pull ambika06101995/nodejs-app:latest
+     - name: delete old container
+       run: docker rm -f nodejs-app-container
+     - name: Run docker container
+       run : docker run -d -p 5000:5000 --name nodejs-app-container ambika06101995/nodejs-app
 
 
 
