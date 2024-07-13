@@ -17,7 +17,7 @@ jobs:
      - name: Publish docker image to docker hub
        run: docker push ambika06101995/nodejs-app:latest
 
-  deploy: 
+  deploy:
    needs: Build
    runs-on: [ip-172-31-42-138] 
    steps:
@@ -27,6 +27,3 @@ jobs:
        run: docker rm -f nodejs-app-container
      - name: Run docker container
        run : docker run -d -p 5000:5000 --name nodejs-app-container ambika06101995/nodejs-app
-
-
-
