@@ -19,8 +19,8 @@ jobs:
 
   deploy: 
    needs: Build
-    runs-on: [ip-172-31-42-138] 
-    steps:
+   runs-on: [ip-172-31-42-138] 
+   steps:
      - name: pull docker image from docker hub
        run: docker pull ambika06101995/nodejs-app:latest
      - name: delete old container
