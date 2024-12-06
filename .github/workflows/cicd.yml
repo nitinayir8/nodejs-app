@@ -16,16 +16,16 @@ jobs:
       - name: Login to docker hub
         run: echo "dckr_pat_Ok3AORXtYQGQ_NxcIh-WTw_jssw" | docker login -u luciferdev966 --password-stdin      
       - name: Build docker image
-        run: docker build -t luciferdev966/my-docker-repo:latest .  
+        run: docker build -t luciferdev966/my-docker-repo .  
       - name: Publish image to docker hub
-        run: docker push luciferdev966/my-docker-repo:latest
+        run: docker push luciferdev966/my-docker-repo
         
   deploy:
     needs: build
     runs-on: self-hosted
     steps:
       - name: Pull image from docker hub
-        run: docker pull luciferdev966/my-docker-repo:latest
+        run: docker pull luciferdev966/my-docker-repo
       - name: Delete old container
         run: docker rm -f nodejs-app-container  
       - name: Run docker container
