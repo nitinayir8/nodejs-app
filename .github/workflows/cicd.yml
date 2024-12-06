@@ -28,7 +28,5 @@ jobs:
         run: sudo chown ubuntu:docker /var/run/docker.sock
       - name: Pull image from docker hub
         run: docker pull luciferdev966/my-docker-repo
-      - name: Delete old container
-        run: docker rm -f nodejs-app-container  
       - name: Run docker container
-        run: docker run -d  --name nodejs-app-container -p 4000:4000 luciferdev966/my-docker-repo tail -f /dev/null
+        run: docker run -d  --name nodejs-app-container -p 4000:4000 luciferdev966/my-docker-repo
