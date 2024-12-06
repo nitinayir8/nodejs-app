@@ -14,7 +14,7 @@ jobs:
       - name: Create .env file
         run: echo "MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD }}" >> .env
       - name: Login to docker hub
-        run: echo "dckr_pat_Ok3AORXtYQGQ_NxcIh-WTw_jssw" | docker login -u luciferdev966 --password-stdin      
+        run: echo "dckr_pat_3TYf61TN206KewF0Jly-Ug133oE" | docker login -u luciferdev966 --password-stdin      
       - name: Build docker image
         run: docker build -t luciferdev966/my-docker-repo .  
       - name: Publish image to docker hub
