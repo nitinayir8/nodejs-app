@@ -29,4 +29,4 @@ jobs:
       - name: Pull image from docker hub
         run: docker pull luciferdev966/my-docker-repo
       - name: Run docker container
-        run: docker run -d  --name nodejs-app-container -p 4000:4000 luciferdev966/my-docker-repo
+        run: docker run -d  --name nodejs-app-container-new -p 4000:4000 luciferdev966/my-docker-repo
