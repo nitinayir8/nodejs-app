@@ -24,8 +24,8 @@ jobs:
     needs: build
     runs-on: self-hosted
     steps:
-      - name: make root and docker owner of /var/run/docker.sock
-        run: sudo chown root:docker /var/run/docker.sock
+      - name: switch to root user
+        run: sudo su
       - name: Pull image from docker hub
         run: docker pull luciferdev966/my-docker-repo
       - name: Delete old container
