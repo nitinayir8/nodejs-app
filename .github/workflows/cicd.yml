@@ -16,7 +16,7 @@ jobs:
       - name: Login to docker hub
         run: echo "dckr_pat_Ok3AORXtYQGQ_NxcIh-WTw_jssw" | docker login -u luciferdev966 --password-stdin      
       - name: Build docker image
-        run: docker build -t luciferdev966/my-docker-repo .  
+        run: docker build -t luciferdev966/my-docker-repo:latest .  
       - name: Publish image to docker hub
         run: docker push luciferdev966/my-docker-repo:latest
         
