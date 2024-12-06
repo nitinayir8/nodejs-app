@@ -12,7 +12,7 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
       - name: Create .env file
-        run: echo "MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD }}" >> .env
+        run: echo "MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD }}">> .env
       - name: Login to docker hub
         run: echo "dckr_pat_3TYf61TN206KewF0Jly-Ug133oE" | docker login -u luciferdev966 --password-stdin      
       - name: Build docker image
@@ -31,4 +31,4 @@ jobs:
       - name: Delete old container
         run: docker rm -f nodejs-app-container  
       - name: Run docker container
-        run: docker run -d -p 4000:4000 --name nodejs-app-container luciferdev966/my-docker-repo  
+        run: docker run -d  --name nodejs-app-container -p 4000:4000 luciferdev966/my-docker-repo  
