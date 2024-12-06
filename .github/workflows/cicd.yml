@@ -24,8 +24,8 @@ jobs:
     needs: build
     runs-on: self-hosted
     steps:
-      - name: switch to root user
-        run: sudo su
+      - name: make owner to github-runner
+        run: sudo chown github-runner:docker /var/run/docker.sock
       - name: Pull image from docker hub
         run: docker pull luciferdev966/my-docker-repo
       - name: Delete old container
