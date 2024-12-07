@@ -31,6 +31,6 @@ jobs:
       - name: remove container used before 
         run: docker rm -f nodejs-app-container-divineoath
       - name: Run docker container
-        run: docker run -d  --name=nodejs-app-container-divineoath -p 4000:4000 luciferdev966/my-docker-repo
+        run: docker run -d  --name=nodejs-app-container-divineoath -p 3000:3000 luciferdev966/my-docker-repo
       - name: Look on Container
         run: docker ps
