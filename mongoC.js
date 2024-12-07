@@ -6,7 +6,7 @@
 // // Call dotenv.config() to load environment variables from .env file
 // dotenv.config();
 
-// const password = encodeURIComponent(process.env.MONGO_PASSWORD.trim());
+
 // //mongodb+srv://devavratsingh2002:<db_password>@cluster0.ml9lh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 // const connectionString = `mongodb+srv://integrationninjas:${password}@cluster0.ml9lh.mongodb.net/?retryWrites=true&w=majority&appName=dev-cluster`; // clustore url
 // const client = new MongoClient(connectionString);
@@ -23,7 +23,8 @@
 import mongodb from 'mongodb'; 
 const { MongoClient,ServerApiVersion  } = mongodb;
 // import { ServerApiVersion } from 'mongodb';
-const uri = "mongodb+srv://devavratsingh2002:KkqJ2XWRK2VpibrT@cluster0.ml9lh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const password = encodeURIComponent(process.env.MONGO_PASSWORD.trim());
+const uri = "mongodb+srv://devavratsingh2002:${password}@cluster0.ml9lh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
 const client = new MongoClient(uri, {
