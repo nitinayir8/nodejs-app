@@ -1,4 +1,4 @@
-name: Deploy Node Application
+name: Deploy Node Application on ec2
 
 on:
   push: 
@@ -12,21 +12,25 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
       - name: Create .env file
-        run: echo "MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD }}" >> .env
+        run: echo "MONGO_PASSWORD=${{ secrets.MONGO_PASSWORD }}">> .env
       - name: Login to docker hub
-        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}       
+        run: echo "dckr_pat_3TYf61TN206KewF0Jly-Ug133oE" | docker login -u luciferdev966 --password-stdin      
       - name: Build docker image
-        run: docker build -t integrationninjas/nodejs-app .  
+        run: docker build -t luciferdev966/my-docker-repo .  
       - name: Publish image to docker hub
-        run: docker push integrationninjas/nodejs-app:latest
+        run: docker push luciferdev966/my-docker-repo
         
   deploy:
     needs: build
     runs-on: self-hosted
     steps:
+      - name: make owner to github-runner
+        run: sudo chown ubuntu:docker /var/run/docker.sock
       - name: Pull image from docker hub
-        run: docker pull integrationninjas/nodejs-app:latest
-      - name: Delete old container
-        run: docker rm -f nodejs-app-container  
+        run: docker pull luciferdev966/my-docker-repo
+      - name: remove container used before 
+        run: docker rm -f nodejs-app-container-divineoath
       - name: Run docker container
-        run: docker run -d -p 4000:4000 --name nodejs-app-container integrationninjas/nodejs-app  
+        run: docker run -d  --name=nodejs-app-container-divineoath -p 3000:3000 luciferdev966/my-docker-repo
+      - name: Look on Container
+        run: docker ps
