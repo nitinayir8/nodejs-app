@@ -1,0 +1,28 @@
+name: Deploy Node Application
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Login to Docker hub
+        run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+      - name: Build Docker image
+        run: docker build -t nitinayir8/nodejs-app .
+      - name: Push Docker image
+        run: docker push nitinayir8/nodejs-app:latest
+
+  deploy:
+    needs: build
+    runs-on: self-hosted 
+    steps:
+      - name: Pull Image from the docker hub
+        run: docker pull nitinayir8/nodejs-app:latest
+      - name: Run the container
+        run: docker run -d -p 4000:4000 --name nodejs-app-container -e MONGO_PASSWORD="${{ secrets.MONGO_PASSWORD }}"
